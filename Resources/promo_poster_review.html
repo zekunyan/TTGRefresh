@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TTGRefresh Poster Review</title>
+  <style>
+    :root {
+      --ink: #101824;
+      --muted: #5f6d7d;
+      --line: #dce4ee;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --blue: #2d74ff;
+      --teal: #10b8a6;
+      --pink: #f45d8f;
+      --amber: #f2a33a;
+      --violet: #6c63ff;
+      --dark: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #e8edf4;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 40px;
+    }
+
+    .poster {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(45, 116, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(45, 116, 255, 0.05) 1px, transparent 1px),
+        var(--paper);
+      background-size: 48px 48px;
+      border: 1px solid rgba(16, 24, 36, 0.08);
+      box-shadow: 0 28px 90px rgba(21, 31, 49, 0.16);
+    }
+
+    .poster-inner {
+      position: absolute;
+      inset: 68px;
+      display: grid;
+      grid-template-columns: 700px 1fr;
+      gap: 48px;
+      align-items: stretch;
+    }
+
+    .copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .mark {
+      width: 62px;
+      height: 62px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--dark);
+      color: white;
+      font-weight: 900;
+      font-size: 25px;
+      box-shadow: 0 14px 30px rgba(17, 24, 39, 0.24);
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .kicker {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 710px;
+      font-size: 78px;
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 22px 0 24px;
+      max-width: 660px;
+      color: #405064;
+      font-size: 24px;
+      line-height: 1.35;
+      font-weight: 520;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 660px;
+      margin-bottom: 22px;
+    }
+
+    .feature {
+      min-height: 64px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 12px 15px;
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 99px;
+      margin-top: 8px;
+      background: var(--blue);
+    }
+
+    .feature:nth-child(2) .dot {
+      background: var(--teal);
+    }
+
+    .feature:nth-child(3) .dot {
+      background: var(--pink);
+    }
+
+    .feature:nth-child(4) .dot {
+      background: var(--amber);
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 850;
+      margin-bottom: 3px;
+    }
+
+    .feature-copy {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 560;
+    }
+
+    .code-panel {
+      width: 660px;
+      border-radius: 8px;
+      border: 1px solid #263244;
+      background: #111827;
+      color: #d8e7ff;
+      overflow: hidden;
+      box-shadow: 0 16px 38px rgba(17, 24, 39, 0.22);
+    }
+
+    .code-head {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      height: 38px;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #9fb0c7;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .traffic {
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: #ff6464;
+    }
+
+    .traffic:nth-child(2) {
+      background: #ffc251;
+    }
+
+    .traffic:nth-child(3) {
+      background: #42d982;
+      margin-right: 8px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 16px 22px 18px;
+      white-space: pre-wrap;
+      font: 700 17px/1.36 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .kw {
+      color: #8ab4ff;
+    }
+
+    .num {
+      color: #ffd166;
+    }
+
+    .symbol {
+      color: #98f5e1;
+    }
+
+    .visual {
+      position: relative;
+      min-width: 0;
+    }
+
+    .showcase-grid {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 72px;
+      display: grid;
+      grid-template-columns: repeat(3, 330px);
+      gap: 18px;
+      align-content: center;
+      align-items: center;
+      justify-content: end;
+    }
+
+    .demo-shot {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(16, 24, 36, 0.1);
+      box-shadow: 0 24px 54px rgba(21, 31, 49, 0.16);
+    }
+
+    .demo-shot:nth-child(1) {
+      transform: translateY(-22px) rotate(-3.2deg);
+      z-index: 2;
+    }
+
+    .demo-shot:nth-child(2) {
+      transform: translateY(34px) rotate(2.5deg);
+      z-index: 3;
+    }
+
+    .demo-shot:nth-child(3) {
+      transform: translateY(-18px) rotate(-1.8deg);
+      z-index: 1;
+    }
+
+    .shot-meta {
+      min-height: 68px;
+      padding: 2px 2px 12px;
+    }
+
+    .shot-title {
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .shot-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .device-frame {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 368 / 800;
+      border-radius: 28px;
+      padding: 8px;
+      background: #111827;
+      overflow: hidden;
+    }
+
+    .device-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      border-radius: 22px;
+      background: #f5f7fb;
+    }
+
+    .combo-frame {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      aspect-ratio: 368 / 800;
+      border-radius: 28px;
+      padding: 8px;
+      background: #111827;
+      overflow: hidden;
+    }
+
+    .combo-pane {
+      position: relative;
+      overflow: hidden;
+      background: #f5f7fb;
+    }
+
+    .combo-pane:first-child {
+      border-radius: 21px 21px 8px 8px;
+    }
+
+    .combo-pane:last-child {
+      border-radius: 8px 8px 21px 21px;
+    }
+
+    .combo-pane img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: #f5f7fb;
+    }
+
+    .combo-load-more img {
+      object-position: 50% 88%;
+    }
+
+    .combo-custom img {
+      object-position: 50% 12%;
+    }
+
+    .combo-custom .combo-tag {
+      top: 78px;
+    }
+
+    .combo-tag {
+      position: absolute;
+      left: auto;
+      right: 12px;
+      top: 12px;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(17, 24, 39, 0.82);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .cap-row {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 54px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      padding-left: 6px;
+    }
+
+    .cap {
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #324052;
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .cap-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: var(--violet);
+    }
+
+    .cap:nth-child(2) .cap-mark {
+      background: var(--teal);
+    }
+
+    .cap:nth-child(3) .cap-mark {
+      background: var(--pink);
+    }
+  </style>
+</head>
+<body>
+  <main class="poster" aria-label="TTGRefresh poster concept">
+    <div class="poster-inner">
+      <section class="copy">
+        <div class="brand-row">
+          <div class="mark">TTG</div>
+          <div>
+            <div class="brand">TTGRefresh</div>
+            <div class="kicker">A polished refresh system for UIKit scroll views</div>
+          </div>
+        </div>
+
+        <h1>Refresh that feels native, flexible, and alive.</h1>
+
+        <p class="lead">
+          Drop in pull refresh, pull load more, infinite load, overlay refresh, and custom animated
+          refresh views for UITableView, UICollectionView, and UIScrollView.
+        </p>
+
+        <div class="feature-grid" aria-label="Core features">
+          <div class="feature">
+            <span class="dot"></span>
+            <div>
+              <div class="feature-title">One extension namespace</div>
+              <div class="feature-copy">Header, footer, programmatic triggers, and teardown through <strong>scrollView.ttg</strong>.</div>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="dot"></span>
+            <div>
+              <div class="feature-title">Guarded loading flow</div>
+              <div class="feature-copy">Built-in coordination prevents duplicate refresh and load-more operations.</div>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="dot"></span>
+            <div>
+              <div class="feature-title">20 built-in path effects</div>
+              <div class="feature-copy">Reusable refresh and load-more styles with configurable text, height, and colors.</div>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="dot"></span>
+            <div>
+              <div class="feature-title">Open customization model</div>
+              <div class="feature-copy">Bring any UIView that conforms to the header or footer content protocols.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-panel" aria-label="Quick API sample">
+          <div class="code-head">
+            <span class="traffic"></span>
+            <span class="traffic"></span>
+            <span class="traffic"></span>
+            TTGRefresh.swift
+          </div>
+          <pre><code>tableView.ttg.addHeaderRefresh <span class="symbol">{</span>
+    <span class="kw">await</span> reloadFeed()
+<span class="symbol">}</span>
+
+collectionView.ttg.addInfiniteLoad(preloadOffset: <span class="num">180</span>) <span class="symbol">{</span>
+    <span class="kw">await</span> loadNextPage()
+<span class="symbol">}</span></code></pre>
+        </div>
+      </section>
+
+      <section class="visual" aria-label="Simulator demo screenshots">
+        <div class="showcase-grid">
+          <figure class="demo-shot">
+            <figcaption class="shot-meta">
+              <div class="shot-title">Overview</div>
+              <div class="shot-note">Refresh, load more, async states</div>
+            </figcaption>
+            <div class="device-frame">
+              <img src="screenshots/posterOverview-hires.png" alt="TTGRefresh main demo screen">
+            </div>
+          </figure>
+          <figure class="demo-shot">
+            <figcaption class="shot-meta">
+              <div class="shot-title">Load More + Custom</div>
+              <div class="shot-note">Bottom action states meet custom header UI</div>
+            </figcaption>
+            <div class="combo-frame" aria-label="Composited load more and custom UI screenshot">
+              <div class="combo-pane combo-load-more">
+                <span class="combo-tag">Load More</span>
+                <img src="screenshots/posterLoadMore-hires.png" alt="Lower portion of load more demo screen">
+              </div>
+              <div class="combo-pane combo-custom">
+                <span class="combo-tag">Custom UI</span>
+                <img src="screenshots/posterCustomPaths-hires.png" alt="Upper portion of custom path refresh demo screen">
+              </div>
+            </div>
+          </figure>
+          <figure class="demo-shot">
+            <figcaption class="shot-meta">
+              <div class="shot-title">Path Gallery</div>
+              <div class="shot-note">20 built-in animated styles</div>
+            </figcaption>
+            <div class="device-frame">
+              <img src="screenshots/posterPathGrid-hires.png" alt="Path effect gallery demo screen">
+            </div>
+          </figure>
+        </div>
+
+        <div class="cap-row" aria-label="Supported modes">
+          <div class="cap"><span class="cap-mark"></span>Pull Refresh</div>
+          <div class="cap"><span class="cap-mark"></span>Pull Load More</div>
+          <div class="cap"><span class="cap-mark"></span>Infinite Load</div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
